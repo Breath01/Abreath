@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>《亲爱的安德烈》——龙应台 - Breath'</title>
+  <title>XD0006 - Breath'</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u300a\u4eb2\u7231\u7684\u5b89\u5fb7\u70c8\u300b\u2014\u2014\u9f99\u5e94\u53f0";
-    var mkdocs_page_input_path = "content\\bookreport\\DearAndreas_LongYingtai.md";
+    var mkdocs_page_name = "XD0006";
+    var mkdocs_page_input_path = "content\\leetcode\\0006.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -57,31 +57,35 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">读书笔记</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">《亲爱的安德烈》——龙应台</a>
-    <ul class="current">
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../bookreport/DearAndreas_LongYingtai/">《亲爱的安德烈》——龙应台</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../BabyTakeYourTime_LongYingtai/">《孩子你慢慢来》——龙应台</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../bookreport/BabyTakeYourTime_LongYingtai/">《孩子你慢慢来》——龙应台</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Leetcode题解</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/template/">template</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../template/">template</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0001/">XD0001</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../0001/">XD0001</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0002/">XD0002</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../0002/">XD0002</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0003/">XD0003</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../0003/">XD0003</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0004/">XD0004</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../0004/">XD0004</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0005/">XD0005</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../0005/">XD0005</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0006/">XD0006</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0006</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#z">Z字形变换</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">样例</a>
+    </li>
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0007/">XD0007</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../0007/">XD0007</a>
                     </li>
                 </ul>
       </div>
@@ -105,11 +109,11 @@
     
       
         
-          <li>读书笔记 &raquo;</li>
+          <li>Leetcode题解 &raquo;</li>
         
       
     
-    <li>《亲爱的安德烈》——龙应台</li>
+    <li>XD0006</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -120,8 +124,56 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">《亲爱的安德烈》中的一些有趣的话</h1>
-<h1 id="_2">《亲爱的安德烈》读后感</h1>
+                <h3 id="_1">题目</h3>
+<h4 id="z">Z字形变换</h4>
+<p>将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。<br />
+比如输入字符串为 "PAYPALISHIRING" 行数为 3 时，排列如下：<br />
+P   A   H   N<br />
+A P L S I I G<br />
+Y   I   R<br />
+之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："PAHNAPLSIIGYIR"。<br />
+请你实现这个将字符串进行指定行数变换的函数：<br />
+string convert(string s, int numRows);</p>
+<h4 id="_2">样例</h4>
+<p>输入：s = "PAYPALISHIRING", numRows = 3
+输出："PAHNAPLSIIGYIR"</p>
+<h3 id="_3">题目大意</h3>
+<p>给定原字符串和变形需要的行数，输出Z变形后的结果。</p>
+<h3 id="_4">解题思路</h3>
+<h4 id="c">C++思路一</h4>
+<p>根据行数创建相应的容器存放每一行的内容，最后拼接输出，时间复杂度O(N)，超过51%，空间复杂度O(N)，超过90%。</p>
+<h3 id="_5">代码</h3>
+<h4 id="c_1">C++思路一</h4>
+<pre><code class="language-C++">class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(numRows==1) return s;
+        string str[1005];
+        int sz=size(s);
+        int cnt=0;
+        int w=1;
+        for(int i=0;i&lt;sz;++i){
+            str[cnt]+=s[i];
+            if(w==1){
+                cnt++;
+                if(cnt==numRows-1){
+                    w=-1;
+                }
+            }else{
+                cnt--;
+                if(cnt==0){
+                    w=1;
+                }
+            }
+        }
+        string ans;
+        for(int i=0;i&lt;numRows;++i){
+            ans.append(str[i]);
+        }
+        return ans;
+    }
+};
+</code></pre>
               
             </div>
           </div>
@@ -129,10 +181,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../BabyTakeYourTime_LongYingtai/" class="btn btn-neutral float-right" title="《孩子你慢慢来》——龙应台">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../0007/" class="btn btn-neutral float-right" title="XD0007">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../diary/2021/" class="btn btn-neutral" title="Y2021"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../0005/" class="btn btn-neutral" title="XD0005"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -158,10 +210,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../diary/2021/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../0005/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../BabyTakeYourTime_LongYingtai/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../0007/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
