@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0007/">
+  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0013/">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>XD0007 - Breath'</title>
+  <title>XD0013 - Breath'</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "XD0007";
-    var mkdocs_page_input_path = "content\\leetcode\\0007.md";
-    var mkdocs_page_url = "/content/leetcode/0007/";
+    var mkdocs_page_name = "XD0013";
+    var mkdocs_page_input_path = "content\\leetcode\\0013.md";
+    var mkdocs_page_url = "/content/leetcode/0013/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js" defer></script>
@@ -81,13 +81,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0006/">XD0006</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0007</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_2">整数反转</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../0007/">XD0007</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0008/">XD0008</a>
                     </li>
@@ -99,7 +93,13 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0012/">XD0012</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../0013/">XD0013</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0013</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">罗马数字转整数</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0014/">XD0014</a>
                     </li>
@@ -129,7 +129,7 @@
         
       
     
-    <li>XD0007</li>
+    <li>XD0013</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -141,41 +141,92 @@
             <div class="section">
               
                 <h3 id="_1">题目</h3>
-<h4 id="_2">整数反转</h4>
-<p>给你一个 32 位的有符号整数 x ，返回 x 中每位上的数字反转后的结果。<br />
-如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。<br />
-假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<h4 id="_2">罗马数字转整数</h4>
+<p>题目0012的反面意思</p>
 <h4 id="_3">样例</h4>
-<p>输入：x = 123<br />
-输出：321</p>
+<p>输入: "III"<br />
+输出: 3</p>
 <h3 id="_4">题目大意</h3>
-<p>将给定的正整数或负整数反转成一个新的数，如果超出int范围就输出0。</p>
+<p>题目0012的反面意思</p>
 <h3 id="_5">解题思路</h3>
 <h4 id="c">C++思路一</h4>
-<p>反转输出，超出范围判断。时间复杂度O(len(x))，超过100%，空间复杂度O(1)，超过84.69%</p>
+<p>特判4，9，40，90，400，900。时间复杂度O(len(N))，超过82.31%，空间复杂度O(1)，超过84.41%</p>
 <h3 id="_6">代码</h3>
 <h4 id="c_1">C++思路一</h4>
 <pre><code class="language-C++">class Solution {
 public:
-    int reverse(int x) {
-        long long ans=0;
-        int mx=0x7fffffff,mi=-mx-1;
-        if(x&gt;0){
-            while(x){
-                ans=ans*10+x%10;
-                x/=10;
+    int romanToInt(string s) {
+        int ans=0;
+        int cur=0;
+        while(cur&lt;size(s)){
+            if(s[cur]=='C'&amp;&amp;s[cur+1]=='M'){
+                ans+=900;
+                cur+=2;
+                continue;
+            }else if(s[cur]=='C'&amp;&amp;s[cur+1]=='D'){
+                ans+=400;
+                cur+=2;
+                continue;
+            }else{
+
             }
-        }else if(x==0){
-            return 0;
-        }else{
-            while(x){
-                ans=ans*10+abs(x%10);
-                x/=10;
+            if(s[cur]=='X'&amp;&amp;s[cur+1]=='C'){
+                ans+=90;
+                cur+=2;
+                continue;
+            }else if(s[cur]=='X'&amp;&amp;s[cur+1]=='L'){
+                ans+=40;
+                cur+=2;
+                continue;
+            }else{
+
             }
-            ans*=-1;
-        }
-        if(ans&gt;mx||ans&lt;mi){
-            ans=0;
+            if(s[cur]=='I'&amp;&amp;s[cur+1]=='X'){
+                ans+=9;
+                cur+=2;
+                continue;
+            }else if(s[cur]=='I'&amp;&amp;s[cur+1]=='V'){
+                ans+=4;
+                cur+=2;
+                continue;
+            }else{
+
+            }
+            if(s[cur]=='M'){
+                ans+=1000;
+                cur+=1;
+                continue;
+            }
+            if(s[cur]=='D'){
+                ans+=500;
+                cur+=1;
+                continue;
+            }
+            if(s[cur]=='C'){
+                ans+=100;
+                cur+=1;
+                continue;
+            }
+            if(s[cur]=='L'){
+                ans+=50;
+                cur+=1;
+                continue;
+            }
+            if(s[cur]=='X'){
+                ans+=10;
+                cur+=1;
+                continue;
+            }
+            if(s[cur]=='V'){
+                ans+=5;
+                cur+=1;
+                continue;
+            }
+            if(s[cur]=='I'){
+                ans+=1;
+                cur+=1;
+                continue;
+            }
         }
         return ans;
     }
@@ -188,10 +239,10 @@ public:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../0008/" class="btn btn-neutral float-right" title="XD0008">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../0014/" class="btn btn-neutral float-right" title="XD0014">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../0006/" class="btn btn-neutral" title="XD0006"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../0012/" class="btn btn-neutral" title="XD0012"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -217,10 +268,10 @@ public:
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../0006/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../0012/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../0008/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../0014/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

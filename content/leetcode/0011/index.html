@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0007/">
+  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0011/">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>XD0007 - Breath'</title>
+  <title>XD0011 - Breath'</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "XD0007";
-    var mkdocs_page_input_path = "content\\leetcode\\0007.md";
-    var mkdocs_page_url = "/content/leetcode/0007/";
+    var mkdocs_page_name = "XD0011";
+    var mkdocs_page_input_path = "content\\leetcode\\0011.md";
+    var mkdocs_page_url = "/content/leetcode/0011/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js" defer></script>
@@ -81,13 +81,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0006/">XD0006</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0007</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_2">整数反转</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../0007/">XD0007</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0008/">XD0008</a>
                     </li>
@@ -95,7 +89,13 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0010/">XD0010</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../0011/">XD0011</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0011</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">盛最多水的容器</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0012/">XD0012</a>
                     </li>
@@ -129,7 +129,7 @@
         
       
     
-    <li>XD0007</li>
+    <li>XD0011</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -141,41 +141,32 @@
             <div class="section">
               
                 <h3 id="_1">题目</h3>
-<h4 id="_2">整数反转</h4>
-<p>给你一个 32 位的有符号整数 x ，返回 x 中每位上的数字反转后的结果。<br />
-如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。<br />
-假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<h4 id="_2">盛最多水的容器</h4>
+<p>给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0) 。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。<br />
+说明：你不能倾斜容器。</p>
 <h4 id="_3">样例</h4>
-<p>输入：x = 123<br />
-输出：321</p>
+<p>输入：[1,8,6,2,5,4,8,3,7]<br />
+输出：49 <br />
+解释：图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p>
 <h3 id="_4">题目大意</h3>
-<p>将给定的正整数或负整数反转成一个新的数，如果超出int范围就输出0。</p>
+<p>找到能盛放最多水的区间，输出其面积</p>
 <h3 id="_5">解题思路</h3>
 <h4 id="c">C++思路一</h4>
-<p>反转输出，超出范围判断。时间复杂度O(len(x))，超过100%，空间复杂度O(1)，超过84.69%</p>
+<p>从两边往里找，短边先行，碰上停止，面积不断更新。时间复杂度O(N)，超过100%，空间复杂度O(1)，超过96.91%。</p>
 <h3 id="_6">代码</h3>
 <h4 id="c_1">C++思路一</h4>
 <pre><code class="language-C++">class Solution {
 public:
-    int reverse(int x) {
-        long long ans=0;
-        int mx=0x7fffffff,mi=-mx-1;
-        if(x&gt;0){
-            while(x){
-                ans=ans*10+x%10;
-                x/=10;
+    int maxArea(vector&lt;int&gt;&amp; height) {
+        int l=0,r=size(height)-1;
+        int ans=0;
+        while(l&lt;=r){
+            ans=max(ans,min(height[l],height[r])*(r-l));
+            if(height[l]&gt;=height[r]){
+                r--;
+            }else{
+                l++;
             }
-        }else if(x==0){
-            return 0;
-        }else{
-            while(x){
-                ans=ans*10+abs(x%10);
-                x/=10;
-            }
-            ans*=-1;
-        }
-        if(ans&gt;mx||ans&lt;mi){
-            ans=0;
         }
         return ans;
     }
@@ -188,10 +179,10 @@ public:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../0008/" class="btn btn-neutral float-right" title="XD0008">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../0012/" class="btn btn-neutral float-right" title="XD0012">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../0006/" class="btn btn-neutral" title="XD0006"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../0010/" class="btn btn-neutral" title="XD0010"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -217,10 +208,10 @@ public:
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../0006/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../0010/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../0008/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../0012/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

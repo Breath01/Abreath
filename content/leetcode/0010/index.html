@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0007/">
+  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0010/">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>XD0007 - Breath'</title>
+  <title>XD0010 - Breath'</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "XD0007";
-    var mkdocs_page_input_path = "content\\leetcode\\0007.md";
-    var mkdocs_page_url = "/content/leetcode/0007/";
+    var mkdocs_page_name = "XD0010";
+    var mkdocs_page_input_path = "content\\leetcode\\0010.md";
+    var mkdocs_page_url = "/content/leetcode/0010/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js" defer></script>
@@ -81,19 +81,19 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0006/">XD0006</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0007</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_2">整数反转</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../0007/">XD0007</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0008/">XD0008</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0009/">XD0009</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../0010/">XD0010</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0010</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">正则表达式匹配</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0011/">XD0011</a>
                     </li>
@@ -129,7 +129,7 @@
         
       
     
-    <li>XD0007</li>
+    <li>XD0010</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -141,43 +141,45 @@
             <div class="section">
               
                 <h3 id="_1">题目</h3>
-<h4 id="_2">整数反转</h4>
-<p>给你一个 32 位的有符号整数 x ，返回 x 中每位上的数字反转后的结果。<br />
-如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。<br />
-假设环境不允许存储 64 位整数（有符号或无符号）。</p>
+<h4 id="_2">正则表达式匹配</h4>
+<p>给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。<br />
+'.' 匹配任意单个字符<br />
+'*' 匹配零个或多个前面的那一个元素<br />
+所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。</p>
 <h4 id="_3">样例</h4>
-<p>输入：x = 123<br />
-输出：321</p>
+<p>输入：s = "aa" p = "a"<br />
+输出：false<br />
+解释："a" 无法匹配 "aa" 整个字符串。</p>
 <h3 id="_4">题目大意</h3>
-<p>将给定的正整数或负整数反转成一个新的数，如果超出int范围就输出0。</p>
+<p>给了正则表达式规则，对字符串进行匹配。</p>
 <h3 id="_5">解题思路</h3>
 <h4 id="c">C++思路一</h4>
-<p>反转输出，超出范围判断。时间复杂度O(len(x))，超过100%，空间复杂度O(1)，超过84.69%</p>
+<p>运用动态规划的思想，后面一个状态的实现是基于前面一个状态，对整个表达式进行遍历，总结相应的结果，得到最后的结论。<br />
+时间复杂度O(N^2)，超过69.84%，空间复杂度O(N^2)，超过68.85%。</p>
 <h3 id="_6">代码</h3>
 <h4 id="c_1">C++思路一</h4>
 <pre><code class="language-C++">class Solution {
 public:
-    int reverse(int x) {
-        long long ans=0;
-        int mx=0x7fffffff,mi=-mx-1;
-        if(x&gt;0){
-            while(x){
-                ans=ans*10+x%10;
-                x/=10;
-            }
-        }else if(x==0){
-            return 0;
-        }else{
-            while(x){
-                ans=ans*10+abs(x%10);
-                x/=10;
-            }
-            ans*=-1;
+    bool isMatch(string s, string p) {
+        vector&lt;vector&lt;bool&gt;&gt; dp(size(s)+1,vector&lt;bool&gt;(size(p)+1));
+        dp[0][0]=true;
+        for(int i=0;i&lt;size(p);++i){
+            if(p[i]=='*') dp[0][i+1]=dp[0][i-1];
         }
-        if(ans&gt;mx||ans&lt;mi){
-            ans=0;
+        for(int i=0;i&lt;size(s);++i){
+            for(int j=0;j&lt;size(p);++j){
+                if(s[i]==p[j]||p[j]=='.'){
+                    dp[i+1][j+1]=dp[i][j];
+                }else if(p[j]=='*'){
+                    if(s[i]!=p[j-1]&amp;&amp;p[j-1]!='.'){
+                        dp[i+1][j+1]=dp[i+1][j-1];
+                    }else{
+                        dp[i+1][j+1]=dp[i+1][j]||dp[i+1][j-1]||dp[i][j+1];
+                    }
+                }
+            }
         }
-        return ans;
+        return dp[size(s)][size(p)];
     }
 };
 </code></pre>
@@ -188,10 +190,10 @@ public:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../0008/" class="btn btn-neutral float-right" title="XD0008">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../0011/" class="btn btn-neutral float-right" title="XD0011">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../0006/" class="btn btn-neutral" title="XD0006"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../0009/" class="btn btn-neutral" title="XD0009"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -217,10 +219,10 @@ public:
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../0006/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../0009/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../0008/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../0011/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
