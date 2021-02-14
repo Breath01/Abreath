@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0001/">
+  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0015/">
   <link rel="shortcut icon" href="../../../img/favicon.ico">
-  <title>XD0001 - Breath'</title>
+  <title>XD0015 - Breath'</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "XD0001";
-    var mkdocs_page_input_path = "content\\leetcode\\0001.md";
-    var mkdocs_page_url = "/content/leetcode/0001/";
+    var mkdocs_page_name = "XD0015";
+    var mkdocs_page_input_path = "content\\leetcode\\0015.md";
+    var mkdocs_page_url = "/content/leetcode/0015/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js" defer></script>
@@ -69,13 +69,7 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../template/">template</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0001</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_2">两数之和</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../0001/">XD0001</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0002/">XD0002</a>
                     </li>
@@ -103,7 +97,13 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../0014/">XD0014</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../0015/">XD0015</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0015</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">三数之和</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
       </div>
@@ -131,7 +131,7 @@
         
       
     
-    <li>XD0001</li>
+    <li>XD0015</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -143,84 +143,45 @@
             <div class="section">
               
                 <h3 id="_1">题目</h3>
-<h4 id="_2">两数之和</h4>
-<p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。<br />
-你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。<br />
-你可以按任意顺序返回答案。</p>
+<h4 id="_2">三数之和</h4>
+<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。<br />
+注意：答案中不可以包含重复的三元组。</p>
 <h4 id="_3">样例</h4>
-<p>输入：nums = [2,7,11,15], target = 9<br />
-输出：[0,1]<br />
-解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。</p>
+<p>输入：nums = [-1,0,1,2,-1,-4]<br />
+输出：[[-1,-1,2],[-1,0,1]]</p>
 <h3 id="_4">题目大意</h3>
-<p>找到两个数字和等于目标数字，返回他们的下标。</p>
+<p>输出三个数的和为零的所有情况，重复的算一种。</p>
 <h3 id="_5">解题思路</h3>
 <h4 id="c">C++思路一</h4>
-<p>暴力，双层for循环。时间复杂度O(N^2)，超过24.86%，空间复杂度O(2)，超过93.48%。</p>
-<h4 id="c_1">C++思路二</h4>
-<p>使用map重新存储，用一遍for来寻找需要数字。<br />
-因为对于第二个数字来说，它的配对的数字一定在他的前面，所以一边for循环足够。<br />
-循环的时间复杂度O(N)，map的find操作的时间复杂度O(logN)，超过99%。最有利情况下需要使用O(1)的空间，最不利情况下需要使用O(n-1)的空间，超过85%。</p>
-<h4 id="python">Python思路一</h4>
-<p>使用List自带的一些方法，如in方法可以判断某个值是否在列表中，index方法可以找到对应的下标。<br />
-in在列表中的时间复杂度是O(N)的，index方法的时间复杂度是O(1)的，超过26.55%，in的空间复杂度未知(?)，index空间复杂度未知(?)，超过45.45%。</p>
-<h4 id="python_1">Python思路二</h4>
-<p>同C++思路二。<br />
-时间超过49.20%，空间超过57.44%。</p>
+<p>遍历，重复判断。时间复杂度O(N^2)，超过51.33%，空间复杂度O(N)，超过92.71%</p>
 <h3 id="_6">代码</h3>
-<h4 id="c_2">C++思路一</h4>
-<pre><code class="language-c++">class Solution {
-public:
-vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {
-    int len=nums.size();
-    vector&lt;int&gt; ans;
-    for(int i=0;i&lt;len-1;++i){
-        for(int j=i+1;j&lt;len;++j){
-            if(nums[i]+nums[j]==target){
-                ans.push_back(i);ans.push_back(j);
-
-            }
-        }
-    }
-    return ans;
-}
-};
-</code></pre>
-<h4 id="c_3">C++思路二</h4>
+<h4 id="c_1">C++思路一</h4>
 <pre><code class="language-C++">class Solution {
 public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {
-        map&lt;int,int&gt; m;
-        for(int i=0;i&lt;nums.size();++i){
-            map&lt;int,int&gt;::iterator it;
-            it=m.find(target-nums[i]);
-            if(it!=m.end()){
-                return {it-&gt;second,i};
+    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) {
+        vector&lt;vector&lt;int&gt;&gt; ans;
+        int len=size(nums);
+        if(len&lt;3) return ans;
+        sort(nums.begin(),nums.end());
+        for(int i=0;i&lt;len-2;++i){
+            if(i&gt;0&amp;&amp;nums[i]==nums[i-1]) continue;
+            int l=i+1;
+            int r=len-1;
+            while(l&lt;r){
+                if(nums[l]+nums[r]+nums[i]&lt;0) l++;
+                else if(nums[l]+nums[r]+nums[i]&gt;0) r--;
+                else{
+                    ans.emplace_back(vector&lt;int&gt;{nums[i],nums[l],nums[r]});
+                    while(l&lt;r&amp;&amp;nums[l]==nums[l+1]) ++l;
+                    while(l&lt;r&amp;&amp;nums[r]==nums[r-1]) --r;
+                    ++l;
+                    --r;
+                }
             }
-            m[nums[i]]=i;
         }
-        return {};
+        return ans;
     }
 };
-</code></pre>
-<h4 id="python_2">Python思路一</h4>
-<pre><code class="language-Python">class Solution:
-    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:
-        for i in range(len(nums)):
-            if target-nums[i] in nums:
-                j=nums.index(target-nums[i])
-                if j!=i:
-                    return [i,j]
-</code></pre>
-<h4 id="python_3">Python思路二</h4>
-<pre><code class="language-Python">class Solution:
-    def twoSum(self, nums, target):
-        hashmap={}
-        for index,num in enumerate(nums):
-            ano=target-num
-            if ano in hashmap:
-                return [hashmap[ano],index]
-            hashmap[num]=index
-        return None
 </code></pre>
               
             </div>
@@ -229,10 +190,8 @@ public:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../0002/" class="btn btn-neutral float-right" title="XD0002">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../template/" class="btn btn-neutral" title="template"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../0014/" class="btn btn-neutral" title="XD0014"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -258,10 +217,8 @@ public:
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../template/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../0014/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../0002/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
