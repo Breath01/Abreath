@@ -1,0 +1,89 @@
+site_name: Breath'
+site_url: http://tenshin.cc
+nav:
+    - 主页: index.md
+    - 竹书纪年: 
+        - Y2021: content/diary/2021.md
+    - 读书笔记:
+        - 《亲爱的安德烈》——龙应台: content/bookreport/DearAndreas_LongYingtai.md
+        - 《孩子你慢慢来》——龙应台: content/bookreport/BabyTakeYourTime_LongYingtai.md
+        - 《百年孤独》——马尔克斯: content/bookreport/OneHundredYearOfSolitude_Márquez.md
+    - Leetcode题解:
+        - template: content/leetcode/template.md
+        - XD0001: content/leetcode/0001.md
+        - XD0002: content/leetcode/0002.md
+        - XD0003: content/leetcode/0003.md
+        - XD0004: content/leetcode/0004.md
+        - XD0005: content/leetcode/0005.md
+        - XD0006: content/leetcode/0006.md
+        - XD0007: content/leetcode/0007.md
+        - XD0008: content/leetcode/0008.md
+        - XD0009: content/leetcode/0009.md
+        - XD0010: content/leetcode/0010.md
+        - XD0011: content/leetcode/0011.md
+        - XD0012: content/leetcode/0012.md
+        - XD0013: content/leetcode/0013.md
+        - XD0014: content/leetcode/0014.md
+        - XD0015: content/leetcode/0015.md
+        - XD0016: content/leetcode/0016.md
+        - XD0017: content/leetcode/0017.md
+        - XD0018: content/leetcode/0018.md
+        - XD0019: content/leetcode/0019.md
+        - XD0020: content/leetcode/0020.md
+        - XD0021: content/leetcode/0021.md
+        - XD0022: content/leetcode/0022.md
+        - XD0023: content/leetcode/0023.md
+        - XD0024: content/leetcode/0024.md
+        - XD0025: content/leetcode/0025.md
+        - XD0026: content/leetcode/0026.md
+        - XD0027: content/leetcode/0027.md
+        - XD0028: content/leetcode/0028.md
+        - XD0029: content/leetcode/0029.md
+        - XD0030: content/leetcode/0030.md
+        - XD0031: content/leetcode/0031.md
+        - XD0032: content/leetcode/0032.md
+        - XD0033: content/leetcode/0033.md
+        - XD0034: content/leetcode/0034.md
+        - XD0035: content/leetcode/0035.md
+        - XD0036: content/leetcode/0036.md
+        - XD0037: content/leetcode/0037.md
+        - XD0038: content/leetcode/0038.md
+        - XD0039: content/leetcode/0039.md
+        - XD0040: content/leetcode/0040.md
+        - XD0041: content/leetcode/0041.md
+        - XD0042: content/leetcode/0042.md
+        - XD0043: content/leetcode/0043.md
+        - XD0044: content/leetcode/0044.md
+        - XD0045: content/leetcode/0045.md
+        - XD0046: content/leetcode/0046.md
+        - XD0047: content/leetcode/0047.md
+        - XD0048: content/leetcode/0048.md
+        - XD0049: content/leetcode/0049.md
+        - XD0050: content/leetcode/0050.md
+        - XD0051: content/leetcode/0051.md
+        - XD0052: content/leetcode/0052.md
+        - XD0053: content/leetcode/0053.md
+        - XD0054: content/leetcode/0054.md
+        - XD0055: content/leetcode/0055.md
+        - XD0058: content/leetcode/0058.md
+        - XD0062: content/leetcode/0062.md
+        - XD0066: content/leetcode/0066.md
+        - XD0067: content/leetcode/0067.md
+        - XD0069: content/leetcode/0069.md
+        - XD0070: content/leetcode/0070.md
+        - XD0074: content/leetcode/0074.md
+        - XD0075: content/leetcode/0075.md
+        - XD0077: content/leetcode/0077.md
+        - XD0078: content/leetcode/0078.md
+        - XD0080: content/leetcode/0080.md
+        - XD0081: content/leetcode/0081.md
+        - XD0083: content/leetcode/0083.md
+        - XD0084: content/leetcode/0084.md
+        - XD0088: content/leetcode/0088.md
+        - XD0090: content/leetcode/0090.md
+        - XD0094: content/leetcode/0094.md
+    - 数据结构考研复习:
+        - 线性表的构建和扩容: content/datastruct/SqList.md
+    - 杂项:
+        - C++编程规范: content/misc/my_c++standard.md
+theme: readthedocs

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="http://tenshin.cc/content/datastruct/SqList/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>线性表的构建和扩容 - Breath'</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7ebf\u6027\u8868\u7684\u6784\u5efa\u548c\u6269\u5bb9";
+    var mkdocs_page_input_path = "content\\datastruct\\SqList.md";
+    var mkdocs_page_url = "/content/datastruct/SqList/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Breath'</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">竹书纪年</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../diary/2021/">Y2021</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">读书笔记</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../bookreport/DearAndreas_LongYingtai/">《亲爱的安德烈》——龙应台</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../bookreport/BabyTakeYourTime_LongYingtai/">《孩子你慢慢来》——龙应台</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../bookreport/OneHundredYearOfSolitude_M%C3%A1rquez/">《百年孤独》——马尔克斯</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Leetcode题解</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/template/">template</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0001/">XD0001</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0002/">XD0002</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0003/">XD0003</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0004/">XD0004</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0005/">XD0005</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0006/">XD0006</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0007/">XD0007</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0008/">XD0008</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0009/">XD0009</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0010/">XD0010</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0011/">XD0011</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0012/">XD0012</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0013/">XD0013</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0014/">XD0014</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0015/">XD0015</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0016/">XD0016</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0017/">XD0017</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0018/">XD0018</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0019/">XD0019</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0020/">XD0020</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0021/">XD0021</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0022/">XD0022</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0023/">XD0023</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0024/">XD0024</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0025/">XD0025</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0026/">XD0026</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0027/">XD0027</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0028/">XD0028</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0029/">XD0029</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0030/">XD0030</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0031/">XD0031</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0032/">XD0032</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0033/">XD0033</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0034/">XD0034</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0035/">XD0035</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0036/">XD0036</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0038/">XD0038</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0039/">XD0039</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0040/">XD0040</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0041/">XD0041</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0042/">XD0042</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0046/">XD0046</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0048/">XD0048</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0050/">XD0050</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0053/">XD0053</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0054/">XD0054</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0055/">XD0055</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0058/">XD0058</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0062/">XD0062</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0066/">XD0066</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0067/">XD0067</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0069/">XD0069</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0070/">XD0070</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0075/">XD0075</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0077/">XD0077</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0078/">XD0078</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0083/">XD0083</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0084/">XD0084</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0088/">XD0088</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0090/">XD0090</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../leetcode/0094/">XD0094</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数据结构考研复习</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">线性表的构建和扩容</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#c">C顺序表的静态分配</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#c_1">C顺序表的动态内存分配和扩容</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#c_2">C++顺序表的动态分配及扩容</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">杂项</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../misc/my_c%2B%2Bstandard/">C++编程规范</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Breath'</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>数据结构考研复习 &raquo;</li>
+        
+      
+    
+    <li>线性表的构建和扩容</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="_1">顺序表相关知识简单记录</h3>
+<h4 id="c">C顺序表的静态分配</h4>
+<pre><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+#define MaxSize 50
+
+typedef struct{
+    int data[MaxSize];
+    int length;
+}SqList;
+
+
+int main(){
+    SqList L;
+    L.length=0;
+    for(int i=0;i&lt;51;++i){
+        if(i&gt;=MaxSize){
+            break;
+        }else{
+            L.data[i]=i;
+            L.length++;
+        }
+    }
+    printf(&quot;%d\n&quot;,L.length);
+    for(int i=0;i&lt;MaxSize;++i){
+        printf(&quot;%d\n&quot;,L.data[i]);
+    }
+    return 0;
+}
+</code></pre>
+<h4 id="c_1">C顺序表的动态内存分配和扩容</h4>
+<pre><code class="language-C">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+#define InitSize 50
+
+typedef struct{
+    int* data;
+    int MaxSize,length;
+}SqList;
+
+
+int main(){
+    SqList L;
+    L.data=(int*)malloc(sizeof(int)*InitSize);
+    L.MaxSize=InitSize;
+    L.length=0;
+    for(int i=0;i&lt;51;++i){
+        L.length++;
+        L.data[i]=i;
+        if(L.length==L.MaxSize){
+            SqList temp;
+            L.data=(int*)realloc(L.data,sizeof(int)*InitSize*(L.MaxSize/InitSize+1));
+            L.MaxSize=InitSize*(L.MaxSize/InitSize+1);
+        }
+    }
+    printf(&quot;%d\n&quot;,L.length);
+    for(int i=0;i&lt;51;++i){
+        printf(&quot;%d\n&quot;,L.data[i]);
+    }
+    return 0;
+}
+</code></pre>
+<h4 id="c_2">C++顺序表的动态分配及扩容</h4>
+<pre><code class="language-C++">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+#define InitSize 50
+
+typedef struct{
+    int* data;
+    int MaxSize,length;
+}SqList;
+
+
+int main(){
+    SqList L;
+    L.data=new int[InitSize];
+    L.MaxSize=InitSize;
+    L.length=0;
+    for(int i=0;i&lt;51;++i){
+        L.length++;
+        L.data[i]=i;
+        if(L.length==L.MaxSize){
+            SqList temp;
+            temp.data=new int[InitSize*(L.MaxSize/InitSize+1)];
+            memcpy(temp.data,L.data,sizeof(int)*L.MaxSize);
+            L.MaxSize=InitSize*(L.MaxSize/InitSize+1);
+            delete[] L.data;
+            L.data=temp.data;
+        }
+    }
+    for(int i=0;i&lt;51;++i){
+        printf(&quot;%d\n&quot;,L.data[i]);
+    }
+    return 0;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../misc/my_c%2B%2Bstandard/" class="btn btn-neutral float-right" title="C++编程规范">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../leetcode/0094/" class="btn btn-neutral" title="XD0094"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../leetcode/0094/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../misc/my_c%2B%2Bstandard/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

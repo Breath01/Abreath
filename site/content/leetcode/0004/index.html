@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="http://tenshin.cc/content/leetcode/0004/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>XD0004 - Breath'</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "XD0004";
+    var mkdocs_page_input_path = "content\\leetcode\\0004.md";
+    var mkdocs_page_url = "/content/leetcode/0004/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Breath'</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">主页</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">竹书纪年</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../diary/2021/">Y2021</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">读书笔记</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../bookreport/DearAndreas_LongYingtai/">《亲爱的安德烈》——龙应台</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../bookreport/BabyTakeYourTime_LongYingtai/">《孩子你慢慢来》——龙应台</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../bookreport/OneHundredYearOfSolitude_M%C3%A1rquez/">《百年孤独》——马尔克斯</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Leetcode题解</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../template/">template</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0001/">XD0001</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0002/">XD0002</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0003/">XD0003</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">XD0004</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">寻找两个正序数组的中位数</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">样例</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0005/">XD0005</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0006/">XD0006</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0007/">XD0007</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0008/">XD0008</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0009/">XD0009</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0010/">XD0010</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0011/">XD0011</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0012/">XD0012</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0013/">XD0013</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0014/">XD0014</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0015/">XD0015</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0016/">XD0016</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0017/">XD0017</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0018/">XD0018</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0019/">XD0019</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0020/">XD0020</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0021/">XD0021</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0022/">XD0022</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0023/">XD0023</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0024/">XD0024</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0025/">XD0025</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0026/">XD0026</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0027/">XD0027</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0028/">XD0028</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0029/">XD0029</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0030/">XD0030</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0031/">XD0031</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0032/">XD0032</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0033/">XD0033</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0034/">XD0034</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0035/">XD0035</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0036/">XD0036</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0038/">XD0038</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0039/">XD0039</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0040/">XD0040</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0041/">XD0041</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0042/">XD0042</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0046/">XD0046</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0048/">XD0048</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0050/">XD0050</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0053/">XD0053</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0054/">XD0054</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0055/">XD0055</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0058/">XD0058</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0062/">XD0062</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0066/">XD0066</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0067/">XD0067</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0069/">XD0069</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0070/">XD0070</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0075/">XD0075</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0077/">XD0077</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0078/">XD0078</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0083/">XD0083</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0084/">XD0084</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0088/">XD0088</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0090/">XD0090</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../0094/">XD0094</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">数据结构考研复习</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../datastruct/SqList/">线性表的构建和扩容</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">杂项</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../misc/my_c%2B%2Bstandard/">C++编程规范</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Breath'</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Leetcode题解 &raquo;</li>
+        
+      
+    
+    <li>XD0004</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="_1">题目</h3>
+<h4 id="_2">寻找两个正序数组的中位数</h4>
+<p>给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的中位数。<br />
+进阶：你能设计一个时间复杂度为 O(log (m+n)) 的算法解决此问题吗？</p>
+<h4 id="_3">样例</h4>
+<p>输入：nums1 = [1,3], nums2 = [2]<br />
+输出：2.00000<br />
+解释：合并数组 = [1,2,3] ，中位数 2</p>
+<h3 id="_4">题目大意</h3>
+<p>给两个数组，找两个数组合并后的中位数。</p>
+<h3 id="_5">解题思路</h3>
+<h4 id="c">C++思路一</h4>
+<p>先合并，再排序，再找中间的数。insert方法的时间复杂度O(N)，sort函数的时间复杂度O(NlogN)，时间超过79.27%，空间复杂度O(N)，超过86.34%。</p>
+<h3 id="_6">代码</h3>
+<h4 id="c_1">C++思路一</h4>
+<pre><code class="language-C++">class Solution {
+public:
+    double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {
+        nums1.insert(nums1.end(),nums2.begin(),nums2.end());
+        sort(nums1.begin(),nums1.end());
+        int len=nums1.size();
+        double ans=0;
+        if(len%2==0){
+            ans=(nums1[len/2]+nums1[len/2-1])/2.0;
+        }else{
+            ans=nums1[(len-1)/2];
+        }
+        return ans;
+    }
+};
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../0005/" class="btn btn-neutral float-right" title="XD0005">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../0003/" class="btn btn-neutral" title="XD0003"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../0003/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../0005/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
